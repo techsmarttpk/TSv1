@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: Traffic-Density-Prediction
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    regions:
+      - oregon
+    port: 10000
