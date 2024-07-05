@@ -25,10 +25,10 @@ def index():
 @app.route('/predict', methods=['POST'])
 def upload():
     if 'file' not in request.files:
-        return "No file part"
+        return jsonify({"error": "No file part"})
     file = request.files['file']
     if file.filename == '':
-        return "No selected file"
+        return jsonify({"error": "No selected file"})
     if file:
         file_path = os.path.join('/tmp', file.filename)
         file.save(file_path)
